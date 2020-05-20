@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe('Ongs', () => {
-    it.skip('devem poder realizar um cadastro', () => {
+    it('devem poder realizar um cadastro', () => {
         cy.visit('http://localhost:3000/register');
         // cy.get - busca um elemento
         // .type - insere um texto
@@ -29,34 +29,34 @@ describe('Ongs', () => {
 
     });
 
-    it.skip('deve poder realizar um login no sistema', () => {
+    it('deve poder realizar um login no sistema', () => {
         cy.visit('http://localhost:3000/');
-        cy.get('input').type(Cypress.env('createdOngId'));
-        cy.get('.button').click();
+        cy.get('[data-cy=id]').type(Cypress.env('createdOngId'));
+        cy.get('[data-cy=button-login]').click();
     });
 
-    it.skip('deve poder fazer logout', () => {
+    it('deve poder fazer logout', () => {
         cy.login()
-        cy.get('button').click();
+        cy.get('[data-cy=logout]').click();
     });
 
-    it.skip('deve cadastrar novo caso', () => {
+    it('deve cadastrar novo caso', () => {
         cy.login()
-        cy.addCase()
+        cy.addIncident()
     });
 
     it('deve poder excluir um caso', () => {
         cy.createNewIncident()
         cy.login()
-        
-        //cy.get('li > button > svg');
+
+        cy.route('DELETE', '**incidents/*').as('deleteIncident');
+
+        cy.get('[data-cy=button-delete]').click();
+
+        cy.wait('@deleteIncident').then((xhr) => {
+            expect(xhr.status).be.eq(204);
+            expect(xhr.response.body).to.be.empty;
+            cy.log('Deletado com sucesso');
+        });
     });
-
-
 });
-
-// user login 32d57e1e
-
-// devem poder fazer logout
-// deve poder cadastrar novos casos
-// deve poder excluir um caso

@@ -1,9 +1,7 @@
 <h1 align="center">Cypress & Be The Hero </h1>
-<p align="center">Um projeto para aprender sobre o Cypress no Youtube</p>
+<p align="center">Um projeto para treinar Cypress</p>
 
-------------
 
-Esta é uma série de vídeos gratuitos e que seguem uma sequência nos conteúdos, indo do mais básico que é a criação do projeto, problemas comuns e propostas de solução, melhoria da arquitetura com o padrão Page Objects e finalizando com a geração de relatórios para os testes. Vale ressaltar que praticamente todo o conteúdo é muito prático - a teoria e eventuais explicações são dadas a medida em que os problemas são resolvidos, em pequenas porções.
 
 ## Abaixo um resumo:
 
@@ -30,7 +28,7 @@ Esta é uma série de vídeos gratuitos e que seguem uma sequência nos conteúd
 ## Passo a passo para executar os testes
 
 #### Baixe o projeto no Github:
-- `https://github.com/samlucax/youtube-cypress.git`
+- `https://github.com/orunior19/cypress.git`
 
 #### Instale e suba nossa *cobaia* localmente
 1.Acessar o diretório backend, instalar as dependências e iniciar a api:

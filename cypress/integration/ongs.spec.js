@@ -1,11 +1,13 @@
 /// <reference types="cypress" />
 
-// index que será executado / importado
+// Na pasta o arquivo index.js será executado
 import Logon from '../support/pages/Logon';
 import Register from '../support/pages/Register';
+import Profile from '../support/pages/Profile';
+import NewIncident from '../support/pages/NewIncident';
 
 describe('Ongs', () => {
-    it.only('devem poder realizar um cadastro', () => {
+    it('devem poder realizar um cadastro', () => {
         Register.visitRegister();
         Register.setFormValues();
         Register.createRoute();
@@ -20,12 +22,18 @@ describe('Ongs', () => {
 
     it('deve poder fazer logout', () => {
         cy.login()
-        cy.get('[data-cy=logout]').click();
+        Profile.clickLogoutButton();
     });
 
-    it('deve cadastrar novo caso', () => {
+    it.only('deve cadastrar novo caso', () => {
         cy.login()
-        cy.addIncident()
+
+        Profile.clickButtonNewIncident();
+        
+        NewIncident.setValues();
+        NewIncident.createRoute();
+        NewIncident.clickSubmit();
+        NewIncident.validateSuccessXhrResponse();
     });
 
     it('deve poder excluir um caso', () => {

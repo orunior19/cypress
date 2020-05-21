@@ -71,22 +71,3 @@ Cypress.Commands.add('createNewIncident', () => {
         Cypress.env('createdIncidentId', response.body.id)
     })
 })
-
-Cypress.Commands.add('addIncident', () => {
-    cy.get('[data-cy=button-new-incident]').click();
-
-    cy.get('[data-cy=input-title]').type('Animal abandonado');
-    cy.get('[data-cy=textarea-description]').type('Animal precisa de apoio para ter onde morar');
-    cy.get('[data-cy=input-value]').type(200);
-    
-    // Monitorar POST 200 na rota /incidents
-    cy.route('POST', '**/incidents').as('newIncident');
-
-    cy.get('[data-cy=button-save]').click();
-
-    cy.wait('@newIncident').then((xhr) => {
-        expect(xhr.status).to.eq(200);
-        expect(xhr.response.body).has.property('id');
-        expect(xhr.response.body.id).is.not.null;
-    })
-})

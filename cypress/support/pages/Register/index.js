@@ -31,7 +31,7 @@ class Register {
                 expect(xhr.response.body.id).is.not.null;
             });   
         } catch (error) {
-            cy.log(error);
+            cy.log("Route not Defined or Not Exist", error);
         }
     }
 }

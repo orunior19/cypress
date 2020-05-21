@@ -30,17 +30,15 @@ Cypress.Commands.add("createOng", () => {
         method: 'POST',
         url: 'http://localhost:3333/ongs',
         body: {
-            name: "Gatos queridos",
-            email: "gatos@mail.com",
-            whatsapp: "519999999999",
-            city: "Porto Alegre",
-            uf: "RS"    
+            name: "Bartolomeu",
+            email: "barTolo@mail.com",
+            whatsapp: "1190004444",
+            city: "São Paulo",
+            uf: "SP"    
         }
     }).then(response => {
         expect(response.body.id).is.not.null;
         cy.log(response.body.id);
-
-        //cria e seta variavel global com o ID
         Cypress.env('createdOngId', response.body.id);
     });
 })
@@ -50,7 +48,7 @@ Cypress.Commands.add('login', () => {
     cy.visit('http://localhost:3000/profile', {
         onBeforeLoad: (browser) => {
             browser.localStorage.setItem('ongId', Cypress.env('createdOngId')),
-            browser.localStorage.setItem('ongName', 'Gatos queridos')
+            browser.localStorage.setItem('ongName', 'Bartolomeu')
         }
     });
 })

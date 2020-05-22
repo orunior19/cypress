@@ -24,6 +24,8 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+// Vale a pena doar a vida por isso? :)
+
 Cypress.Commands.add("createOng", () => {
     //cy.request injeta uma new ong pela API usando metodo POST
     cy.request({
